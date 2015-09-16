@@ -3,8 +3,8 @@
 #Script to show the IP address assigned by DHCP from your internet provider
 
 #Description - Find the IP address that is currently assigned to your home router
-$Setup - requires 1) execution permissions of this script file by user 2) a variable for PATH in export with the scripts location.
-$What is - bash - shell that allows users to interact with underlying OS. commonly referred to as the "command line" - export - houses all user variables, including PATH. Adding to PATH takes on the form 'export PATH=$PATH:<NEW PATH>'. - chmod - changing permissions is necessary for users that do not have read (r), write (w) or execution (x) privileges. in order to run this script you must be able to execute (x) this script. You can use 'ls -al' command in the script folder to see the permissions on the right. run 'chmod u+x <FILE>'. the user (u) is adding (+) execution (x) privileges by the script chmod to the file (FILE).
+#Setup - requires 1) execution permissions of this script file by user 2) a variable for PATH in export with the scripts location.
+#What is - bash - shell that allows users to interact with underlying OS. commonly referred to as the "command line" - export - houses all user variables, including PATH. Adding to PATH takes on the form 'export PATH=$PATH:<NEW PATH>'. - chmod - changing permissions is necessary for users that do not have read (r), write (w) or execution (x) privileges. in order to run this script you must be able to execute (x) this script. You can use 'ls -al' command in the script folder to see the permissions on the right. run 'chmod u+x <FILE>'. the user (u) is adding (+) execution (x) privileges by the script chmod to the file (FILE).
 
 #---------------THE SCRIPT BEGINNING -----------------
 
