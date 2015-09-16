@@ -1,0 +1,38 @@
+#Created by Drew
+#Dated on Sept 15, 2015
+#Script to show top 20 commonly used "pipe" (|) commands
+
+#Description - It is common for the beginner not to remember what command worked the last time, nor to remember how piping works in bash script generation. This tool will show the user the top 20 recently used pipe scripts by them by typing 'pipes'.
+$Setup - requires 1) writing to a .tmphistory (hidden) file located in user's home directory. This file will store contents of history (bash). This file is frequently updated by a scheduler script due to history holding only the last 500 shell commands. That is problematic if a user wants to see his last 'top 20' of the past days/month of learning. A user can easily do 500 commands in a single day. 2) writing to a .tmphistory_pipes file. This file is a selected sort of the .tmphistory and houses only the '|' scripts generated from the script's sorting. 3) execution permissions of this script file by user 4) a variable for PATH in export with the scripts location.
+$What is - bash - shell that allows users to interact with underlying OS. commonly referred to as the "command line" - export - houses all user variables, including PATH. Adding to PATH takes on the form 'export PATH=$PATH:<NEW PATH>'. - chmod - changing permissions is necessary for users that do not have read (r), write (w) or execution (x) privileges. in order to run this script you must be able to execute (x) this script. You can use 'ls -al' command in the script folder to see the permissions on the right. run 'chmod u+x <FILE>'. the user (u) is adding (+) execution (x) privileges by the script chmod to the file (FILE).
+
+#---------------THE SCRIPT BEGINNING -----------------
+
+#Every bash script file needs this simple line. Every other line that is preceded by a # will signify a comment, meaning it WILL NOT be run within the code.
+#! /bin/bash
+
+#This says, run the 'touch' and 'history' commands to create two files in the user's home (~) directory
+touch ~/.tmphistory_pipes
+history > ~/.tmphistory
+
+#These are variables to signify the input file (input) and output file (output)
+input=~/.tmphistory
+output=~/.tmphistory_pipes
+
+#This is a while loop. We are reading the input variables line by line. If we have another line, we are still TRUE, so the while loop continues until we make it to the end of the input file.
+while read line;
+do
+    #If statements check the truth of the value inside. Here we look to see if our line from the input file contains the '|' symbol.
+	if [[ $line == *"|"* ]]
+	then
+        #If we found a '|' symbol, then we copy that line from the input file to the output file.
+        echo $line >> $output
+    #This funny looking 'fi' ends the 'if' statement above. Think about closure.
+	fi
+#This ends the 'do' statement. The '<' means we take the input file's contents and run that inside the while loop. This is what we have been doing the whole time, this is how the file is read line by line! Yes, it is hard to understand why it is at the end of the function.
+done < $input
+
+#This 'cat' will display to the user at the command line the top 20 '|' commands to the user.'Head' accomplishes this. Notice how we used a '|' command that is being evaluated against our freshly created output file (~/.tmphistory_pipes)?
+cat $output | head -20
+
+#-----------------THE SCRIPT END -----------------------

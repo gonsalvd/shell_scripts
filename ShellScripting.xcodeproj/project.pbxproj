@@ -6,10 +6,21 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXFileReference section */
+		6AC83F971BA977AC00F7E6C5 /* common */ = {isa = PBXFileReference; lastKnownFileType = text; path = common; sourceTree = "<group>"; };
+		6AC83F981BA977AC00F7E6C5 /* myip */ = {isa = PBXFileReference; lastKnownFileType = text; path = myip; sourceTree = "<group>"; };
+		6AC83F991BA977AC00F7E6C5 /* pipes */ = {isa = PBXFileReference; lastKnownFileType = text; path = pipes; sourceTree = "<group>"; };
+		6AC83F9A1BA977AC00F7E6C5 /* uncommon */ = {isa = PBXFileReference; lastKnownFileType = text; path = uncommon; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
 /* Begin PBXGroup section */
 		6AC83F901BA9779C00F7E6C5 = {
 			isa = PBXGroup;
 			children = (
+				6AC83F971BA977AC00F7E6C5 /* common */,
+				6AC83F981BA977AC00F7E6C5 /* myip */,
+				6AC83F991BA977AC00F7E6C5 /* pipes */,
+				6AC83F9A1BA977AC00F7E6C5 /* uncommon */,
 			);
 			sourceTree = "<group>";
 		};

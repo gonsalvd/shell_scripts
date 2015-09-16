@@ -1,0 +1,17 @@
+#Created by Drew
+#Dated on Sept 15, 2015
+#Script to show the IP address assigned by DHCP from your internet provider
+
+#Description - Find the IP address that is currently assigned to your home router
+$Setup - requires 1) execution permissions of this script file by user 2) a variable for PATH in export with the scripts location.
+$What is - bash - shell that allows users to interact with underlying OS. commonly referred to as the "command line" - export - houses all user variables, including PATH. Adding to PATH takes on the form 'export PATH=$PATH:<NEW PATH>'. - chmod - changing permissions is necessary for users that do not have read (r), write (w) or execution (x) privileges. in order to run this script you must be able to execute (x) this script. You can use 'ls -al' command in the script folder to see the permissions on the right. run 'chmod u+x <FILE>'. the user (u) is adding (+) execution (x) privileges by the script chmod to the file (FILE).
+
+#---------------THE SCRIPT BEGINNING -----------------
+
+#Every bash script file needs this simple line. Every other line that is preceded by a # will signify a comment, meaning it WILL NOT be run within the code.
+#!/bin/bash
+
+#Let us break this down. (Dig) is a command that helps resolve domain/IP names/addresses. We will query a server called myip.opendns.com @resolver1.opendns.com to find our currently assigned IP address. This will give you a similar result to going to Google.com and asking "What is my IP?".
+dig +short myip.opendns.com @resolver1.opendns.com
+
+#-----------------THE SCRIPT END -----------------------

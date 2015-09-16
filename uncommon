@@ -1,0 +1,20 @@
+#Created by Drew
+#Dated on Sept 15, 2015
+#Script to show top 20 UNcommonly commands
+
+#Description - It is common for the beginner not to remember what command worked the last time. This tool will show the user the 20 most UNcommonly used commands, those commands that we also forget!
+$Setup - requires 1) writing to a .tmphistory (hidden) file located in user's home directory. This file will store contents of history (bash). This file is frequently updated by a scheduler script due to history holding only the last 500 shell commands. That is problematic if a user wants to see his last 'top 20' of the past days/month of learning. A user can easily do 500 commands in a single day. 2) execution permissions of this script file by user 3) a variable for PATH in export with the scripts location.
+$What is - bash - shell that allows users to interact with underlying OS. commonly referred to as the "command line" - export - houses all user variables, including PATH. Adding to PATH takes on the form 'export PATH=$PATH:<NEW PATH>'. - chmod - changing permissions is necessary for users that do not have read (r), write (w) or execution (x) privileges. in order to run this script you must be able to execute (x) this script. You can use 'ls -al' command in the script folder to see the permissions on the right. run 'chmod u+x <FILE>'. the user (u) is adding (+) execution (x) privileges by the script chmod to the file (FILE).
+
+#---------------THE SCRIPT BEGINNING -----------------
+
+#Every bash script file needs this simple line. Every other line that is preceded by a # will signify a comment, meaning it WILL NOT be run within the code.
+#! /bin/bash
+
+#This says, run the 'history' commands to create one file in the user's home (~) directory
+history > ~/.tmphistory
+
+#This is long! Lets look at how piping works! Read it from left to right with me... First we will open (cat) the contents of a file (~/.tmphistory). Now that we have those contents, we will look at the fifth (5) column with (cut), just like cut/copy/paste works on the clipboard. We know what a column is by the ' ', meaning a column is equal to a space, versus say a ; or : or other common delimiters. Now that we have the 5th column, we will (sort) alphabetically. Then we will look at only the unique (uniq) values, consolidating the duplicates by showing their count (-c) number. Now we have a sorted list that also has the number of times each item was used (eg, You used the command 'ls' 53 counted times). Now lets sort again but now lets sort in reverse (-r) so we get our top 20 at the BOTTOM. Now let us only look at the 20 most uncommonly used commands to jog our memory!
+cat ~/.tmphistory | cut -d ' ' -f 5 | sort | uniq -c | sort -r | tail -20
+
+#-----------------THE SCRIPT END -----------------------
